@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import Personajes from '@/views/Personajes.vue'
 import Personaje from '@/views/Personaje.vue'
 import Contacto from '@/views/Contacto.vue'
+import Comodin from '@/views/Comodin.vue'
 
 Vue.use(VueRouter)
 
@@ -23,7 +24,8 @@ const routes = [
   },
   {
     path: '/personajes',
-    component: Personajes
+    component: Personajes, 
+    alias:['/people','/characters'],
   },
   {
     path: '/personaje/:id',
@@ -33,6 +35,10 @@ const routes = [
   {
     path:'/contacto',
     component: Contacto
+  },
+  {
+    path:'*',
+    component: Comodin
   }
 ]
 
