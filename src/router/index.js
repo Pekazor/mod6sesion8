@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+/*import HomeView from '../views/HomeView.vue'
 import Personajes from '@/views/Personajes.vue'
 import Personaje from '@/views/Personaje.vue'
-import Contacto from '@/views/Contacto.vue'
+import Contacto from '@/views/Contacto.vue'*/
 import Comodin from '@/views/Comodin.vue'
 
 Vue.use(VueRouter)
@@ -12,7 +12,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: () => import(/* webpackChunkName: "home" */ '../views/HomeView.vue')
   },
   {
     path: '/about',
@@ -24,17 +24,17 @@ const routes = [
   },
   {
     path: '/personajes',
-    component: Personajes, 
+    component: () => import(/* webpackChunkName: "personajes" */ '@/views/Personajes.vue'),
     alias:['/people','/characters'],
   },
   {
     path: '/personaje/:id',
-    component: Personaje,
+    component: () => import(/* webpackChunkName: "Personaje" */ '../views/Personaje.vue'),
     props: true
   },
   {
     path:'/contacto',
-    component: Contacto
+    component: () => import(/* webpackChunkName: "Contacto" */ '../views/Contacto.vue'),
   },
   {
     path:'*',
